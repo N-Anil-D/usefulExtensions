@@ -99,6 +99,7 @@ function exportDocument(option){
                     <li><a href="https://sweetalert2.github.io/" target="_blank" rel="noopener noreferrer" class="underline text-yellow-800 hover:text-yellow-600 font-semibold">SWEETALERT2 (with animate.css)</a></li>
                     <li><a href="https://fontawesome.com/search" target="_blank" rel="noopener noreferrer" class="underline text-yellow-800 hover:text-yellow-600 font-semibold">fontawesome</a></li>
                     <li><a href="https://github.com/zanysoft/laravel-zip" target="_blank" rel="noopener noreferrer" class="underline text-yellow-800 hover:text-yellow-600 font-semibold">zıp</a></li>
+                    <li><a href="https://github.com/stevebauman/location" target="_blank" rel="noopener noreferrer" class="underline text-yellow-800 hover:text-yellow-600 font-semibold">Location</a></li>
                 </ul>
             </div>
         </div>
@@ -224,6 +225,21 @@ function exportDocument(option){
                     Export as Zip
                 </p>
             </div>
+            <div class="border p-8">
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                    <h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:text-yellow-600" @click="router.get(route('location'))">
+                        Get Location
+                    </h2>
+                </div>
+
+                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                    Get Location
+                </p>
+            </div>
+
             <div class="md:col-span-2 flex justify-center">
                 <img class="object-contain" src="properties.webp" alt="">
             </div>

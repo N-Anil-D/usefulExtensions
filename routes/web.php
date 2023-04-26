@@ -3,7 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\{ExportExcel, ImportExcel, ExportPDF, TelegramController, ZipController};
+use App\Http\Controllers\{ExportExcel, ImportExcel, ExportPDF, TelegramController, ZipController, LocationController};
 use Barryvdh\DomPDF\Facade\Pdf;
 
 /*
@@ -36,6 +36,7 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
         Route::get('/get-telegram-updates', [TelegramController::class,'updates'])->name('telegram.updates');
         Route::get('/telegram-send-message', [TelegramController::class,'sendMessage'])->name('telegram.send.message');
         Route::get('/zip', [ZipController::class,'index'])->name('zip.index');
+        Route::get('/location', [LocationController::class,'index'])->name('location');
         // Route::post('/test-pusher', [PusherTestController::class,'sendMessage'])->name('telegram.send.message');
         Route::get('test/name?', function () {
             event(new App\Events\PusherTestEvent('name?'));

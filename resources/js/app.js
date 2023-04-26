@@ -22,7 +22,7 @@ import 'animate.css';
 //animate
 
 
-const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'E.G Prj. by NAD';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -36,6 +36,6 @@ createInertiaApp({
             .mount(el);
     },
     progress: {
-        color: '#4B5563',
+        color: '#2E415C',
     },
 });
