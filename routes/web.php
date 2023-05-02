@@ -3,7 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Http\Controllers\{ExportExcel, ImportExcel, ExportPDF, TelegramController, ZipController, LocationController};
+use App\Http\Controllers\{ExportExcel, ImportExcel, ExportPDF, TelegramController, ZipController, LocationController, KgsController};
 use Barryvdh\DomPDF\Facade\Pdf;
 
 /*
@@ -38,9 +38,20 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
         Route::get('/zip', [ZipController::class,'index'])->name('zip.index');
         Route::get('/location', [LocationController::class,'index'])->name('location');
         // Route::post('/test-pusher', [PusherTestController::class,'sendMessage'])->name('telegram.send.message');
-        Route::get('test/name?', function () {
-            event(new App\Events\PusherTestEvent('name?'));
-            return "Event has been sent!";
-        });
-        
+        // Route::get('test/name?', function () {
+        //     event(new App\Events\PusherTestEvent('name?'));
+        //     return "Event has been sent!";
+        // });
+    })
+    ->prefix('kgs')->group(function () {
+        Route::get('/list', [KgsController::class,'index'])->name('kgs.table.list');
+        Route::get('/example-insert-users', [KgsController::class,'exampleInsertUsers'])->name('kgs.example.insert.users');
+        Route::post('/insert-users', [KgsController::class,'importUsers'])->name('kgs.insert.users');
     });
+// Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'])
+//     ->group(function () {
+//         Route::get('/list', [KgsController::class,'index'])->name('kgs.table.list');
+//         Route::get('/insert-kgs-login', [KgsController::class,'index'])->name('kgs.login.insert');
+
+
+// });

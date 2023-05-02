@@ -89,7 +89,7 @@ use App\Models\User;
         ];
     }
 
-    /** EĞER CONTROLLER.PHP DE ->DOWNLOAD() FONKSİYONU VE PARAMETLERİ BURDA YAZIP ->DOWNLOAD() KULLANMADAN İNDERMEK İÇİN */
+    /** EĞER CONTROLLER.PHP DE ->DOWNLOAD() FONKSİYONU İÇİNDE YAZMAK İSTEMİYORSAN VE PARAMETLERİ BURDA YAZIP ->DOWNLOAD() KULLANMADAN İNDERMEK İÇİN */
     /**
     * It's required to define the fileName within
     * the export class when making use of Responsable.
@@ -109,6 +109,6 @@ use App\Models\User;
         'Content-Type' => 'application/vnd.ms-excel',
     ];
 
-    /** EĞER CONTROLLER.PHP DE ->DOWNLOAD() FONKSİYONU VE PARAMETLERİ BURDA YAZIP ->DOWNLOAD() KULLANMADAN İNDERMEK İÇİN */
+    /** EĞER CONTROLLER.PHP DE ->DOWNLOAD() FONKSİYONU İÇİNDE YAZMAK İSTEMİYORSAN VE PARAMETLERİ BURDA YAZIP ->DOWNLOAD() KULLANMADAN İNDERMEK İÇİN */
     
 }

@@ -12,10 +12,10 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 //fontawesome Icons
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faUserSecret,faXmark,faFileExcel,faFileExport } from '@fortawesome/free-solid-svg-icons';
+import { faUserSecret,faXmark,faFileExcel,faFileExport,faCaretRight,faSortDown } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faRectangleList } from '@fortawesome/free-regular-svg-icons';
-library.add(faTwitter,faUserSecret,faRectangleList,faXmark,faFileExcel,faFileExport);
+import { faRectangleList,faSquareCaretDown } from '@fortawesome/free-regular-svg-icons';
+library.add(faTwitter,faUserSecret,faRectangleList,faXmark,faFileExcel,faFileExport,faSquareCaretDown,faCaretRight,faSortDown);
 //fontawesome Icons
 //animate
 import 'animate.css';

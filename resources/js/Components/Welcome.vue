@@ -9,9 +9,15 @@ const Swal = inject('$swal');
 const form = reactive({
   file: null,
 })
+const form2 = reactive({
+  file: null,
+})
 
 function submit() {
     router.post(route('import.excel'), form);
+}
+function submit2() {
+    router.post(route('kgs.insert.users'), form2);
 }
 
 function updates() {
@@ -67,6 +73,30 @@ function exportDocument(option){
                 window.location.href=route('export.users.pdf');
             }
         })
+    } else if(option == '3') {
+        Swal.fire({
+            title: '<strong>Export to PDF</strong>',
+            showClass: {
+                popup: 'animate__animated animate__bounceInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__bounceOutDown'
+            },
+            icon: 'question',
+            html:
+                'Download Example file about importing kgs users.',
+            showCloseButton: true,
+            showCancelButton: true,
+            focusConfirm: true,
+            confirmButtonText:'Download',
+            confirmButtonAriaLabel:'Download',
+            cancelButtonText:'Cancel',
+            cancelButtonAriaLabel:'Cancel',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href=route('kgs.example.insert.users');
+            }
+        })
     }
 }
 
@@ -110,13 +140,13 @@ function exportDocument(option){
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                     </svg>
-                    <h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:text-yellow-600" @click="exportDocument('1')">
+                    <h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:cursor-pointer hover:text-yellow-600" @click="exportDocument('1')">
                         Export Users With Excel Class
                     </h2>
                 </div>
                 
                 <p class="mt-4 text-gray-300 text-sm leading-relaxed">
-                    <font-awesome-icon icon="fa-solid fa-file-export" class="text-yellow-700 hover:text-yellow-500" size="lg" />
+                    <font-awesome-icon icon="fa-solid fa-file-export" class="text-yellow-700 hover:cursor-pointer hover:text-yellow-500" size="lg" />
                     Export Users With Excel Class
                 </p>
             </div>
@@ -125,7 +155,7 @@ function exportDocument(option){
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                     </svg>
-                    <h2 class="block mx-3 text-xl font-semibold text-yellow-700 hover:text-yellow-600">
+                    <h2 class="block mx-3 text-xl font-semibold text-yellow-700 hover:cursor-pointer hover:text-yellow-600">
                         Import With Excel Class
                     </h2>
                     <a :href="route('import.excel.example.download')">
@@ -138,7 +168,7 @@ function exportDocument(option){
                     <!-- <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label> -->
                     <input class="block w-full text-sm text-stone-400 border border-stone-600 rounded-lg cursor-pointer bg-stone-900 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" @input="form.file = $event.target.files[0]" >
                     <button class="text-white border p-2 mt-2" type="submit">
-                        <font-awesome-icon icon="fa-solid fa-file-excel" class="text-yellow-700 hover:text-yellow-500" size="lg" />
+                        <font-awesome-icon icon="fa-solid fa-file-excel" class="text-yellow-700 hover:cursor-pointer hover:text-yellow-500" size="lg" />
                         Import With Excel Class
                     </button>
                 </form>
@@ -152,7 +182,7 @@ function exportDocument(option){
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                     </svg>
-                    <h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:text-yellow-600" @click="exportDocument('2')">
+                    <h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:cursor-pointer hover:text-yellow-600" @click="exportDocument('2')">
                         Export Users With PDF Class
                     </h2>
                 </div>
@@ -165,7 +195,7 @@ function exportDocument(option){
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                     </svg>
-                    <h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:text-yellow-600">
+                    <h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:cursor-pointer hover:text-yellow-600">
                         <a @click="updates">
                             Get Messages Which Sent Bot
                         </a>
@@ -181,7 +211,7 @@ function exportDocument(option){
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                     </svg>
-                    <h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:text-yellow-600" 
+                    <h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:cursor-pointer hover:text-yellow-600" 
                         @click="
                         router.get(
                             route('telegram.send.message'),
@@ -206,7 +236,7 @@ function exportDocument(option){
                     </svg>
                     <Dropdown>
                         <template #trigger>
-                            <button><h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:text-yellow-600">Zip</h2></button>
+                            <button><h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:cursor-pointer hover:text-yellow-600">Zip <font-awesome-icon icon="fa-solid fa-sort-down" /></h2></button>
                         </template>
                         <template #content>
                             <ul class="bg-yellow-900">
@@ -230,13 +260,51 @@ function exportDocument(option){
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
                     </svg>
-                    <h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:text-yellow-600" @click="router.get(route('location'))">
+                    <h2 class="ml-3 text-xl font-semibold text-yellow-700 hover:cursor-pointer hover:text-yellow-600" @click="router.get(route('location'))">
                         Get Location
                     </h2>
                 </div>
 
                 <p class="mt-4 text-gray-300 text-sm leading-relaxed">
                     Get Location
+                </p>
+            </div>
+
+            <div class="border p-8">
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                    </svg>
+                    <h2 class="ml-3 text-xl font-semibold text-yellow-700 block">
+                        KGS Table (Test)
+                    </h2>
+                </div>
+                <ul class="">
+                    <li class="text-yellow-700 hover:cursor-pointer hover:text-yellow-500 my-2" @click="router.get(route('kgs.table.list'))"><font-awesome-icon icon="fa-solid fa-caret-right" /> Listele</li>
+                    <li class="text-yellow-700 hover:cursor-pointer hover:text-yellow-500 my-2" @click="exportDocument('3')"><font-awesome-icon icon="fa-solid fa-caret-right" /> <span class="underline">Download Example Kgs User Excel</span></li>
+                    <li class="hover:text-yellow-600">
+                        <form @submit.prevent="submit2" enctype="multipart/form-data">
+                            <div class="grid grid-flow-col justify-stretch">
+                                <div class="text-yellow-700 hover:cursor-pointer hover:text-yellow-500">
+                                    <font-awesome-icon icon="fa-solid fa-caret-right" class="mr-1" />
+                                    <button type="submit">
+                                        <font-awesome-icon icon="fa-solid fa-file-excel" />
+                                        Import KGS Users
+                                    </button>
+                                </div>
+                                <div>
+                                    <input class="text-sm text-stone-400 border border-stone-600 rounded-lg cursor-pointer bg-stone-900 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" @input="form2.file = $event.target.files[0]" >
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <!-- <li class="hover:text-yellow-600" @click="router.get(route('zip.index'),{ option: 'uncompressed' })">Uncompressed</li>
+                    <li class="hover:text-yellow-600" @click="router.get(route('zip.index'),{ option: 'has' })">Has</li>
+                    <li class="hover:text-yellow-600" @click="router.get(route('zip.index'),{ option: 'addByPath' })">Add to zip by path</li> -->
+                </ul>
+
+                <p class="mt-4 text-gray-300 text-sm leading-relaxed">
+                    This page only display table. 
                 </p>
             </div>
 
