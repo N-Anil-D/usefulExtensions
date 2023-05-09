@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kgs_users', function (Blueprint $table) {
+        Schema::create('kgs_giris', function (Blueprint $table) {
             $table->id();
-            $table->char('kgs_id',11)->unique('kgs_id');
-            $table->string('name');
+            $table->char('kgs_id',11);
+            $table->timestamp('giris', $precision = 0)->nullable();
             $table->softDeletes();
-            $table->smallInteger('shift');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kgs_users');
+        Schema::dropIfExists('kgs_giris');
     }
 };

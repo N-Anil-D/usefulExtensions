@@ -12,13 +12,12 @@ const form = reactive({
 const form2 = reactive({
   file: null,
 })
-
-function submit() {
-    router.post(route('import.excel'), form);
-}
-function submit2() {
-    router.post(route('kgs.insert.users'), form2);
-}
+const form3 = reactive({
+  file: null,
+})
+const form4 = reactive({
+  file: null,
+})
 
 function updates() {
     router.get(route('telegram.updates'));
@@ -164,9 +163,10 @@ function exportDocument(option){
                         </svg>
                     </a>
                 </div>
-                <form @submit.prevent="submit" enctype="multipart/form-data">
+                <form @submit.prevent="router.post(route('import.excel'), form)" enctype="multipart/form-data">
                     <!-- <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label> -->
-                    <input class="block w-full text-sm text-stone-400 border border-stone-600 rounded-lg cursor-pointer bg-stone-900 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" @input="form.file = $event.target.files[0]" >
+                    <input class="block w-full text-sm text-stone-400 border border-stone-600 rounded-lg cursor-pointer bg-stone-900 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" name="file"
+                     type="file" @input="form.file = $event.target.files[0]" >
                     <button class="text-white border p-2 mt-2" type="submit">
                         <font-awesome-icon icon="fa-solid fa-file-excel" class="text-yellow-700 hover:cursor-pointer hover:text-yellow-500" size="lg" />
                         Import With Excel Class
@@ -282,8 +282,8 @@ function exportDocument(option){
                 <ul class="">
                     <li class="text-yellow-700 hover:cursor-pointer hover:text-yellow-500 my-2" @click="router.get(route('kgs.table.list'))"><font-awesome-icon icon="fa-solid fa-caret-right" /> Listele</li>
                     <li class="text-yellow-700 hover:cursor-pointer hover:text-yellow-500 my-2" @click="exportDocument('3')"><font-awesome-icon icon="fa-solid fa-caret-right" /> <span class="underline">Download Example Kgs User Excel</span></li>
-                    <li class="hover:text-yellow-600">
-                        <form @submit.prevent="submit2" enctype="multipart/form-data">
+                    <li class="hover:text-yellow-500">
+                        <form @submit.prevent="router.post(route('kgs.insert.users'), form2)" enctype="multipart/form-data">
                             <div class="grid grid-flow-col justify-stretch">
                                 <div class="text-yellow-700 hover:cursor-pointer hover:text-yellow-500">
                                     <font-awesome-icon icon="fa-solid fa-caret-right" class="mr-1" />
@@ -293,14 +293,45 @@ function exportDocument(option){
                                     </button>
                                 </div>
                                 <div>
-                                    <input class="text-sm text-stone-400 border border-stone-600 rounded-lg cursor-pointer bg-stone-900 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file" @input="form2.file = $event.target.files[0]" >
+                                    <input class="text-sm text-stone-400 border border-stone-600 rounded-lg cursor-pointer bg-stone-900 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" name="file" type="file" @input="form2.file = $event.target.files[0]" >
                                 </div>
                             </div>
                         </form>
                     </li>
-                    <!-- <li class="hover:text-yellow-600" @click="router.get(route('zip.index'),{ option: 'uncompressed' })">Uncompressed</li>
-                    <li class="hover:text-yellow-600" @click="router.get(route('zip.index'),{ option: 'has' })">Has</li>
-                    <li class="hover:text-yellow-600" @click="router.get(route('zip.index'),{ option: 'addByPath' })">Add to zip by path</li> -->
+                    <li class="hover:text-yellow-500">
+                        <form @submit.prevent="router.post(route('kgs.insert.login'), form3)" enctype="multipart/form-data">
+                            <div class="grid grid-flow-col justify-stretch">
+                                <div class="text-yellow-700 hover:cursor-pointer hover:text-yellow-500">
+                                    <font-awesome-icon icon="fa-solid fa-caret-right" class="mr-1" />
+                                    <button type="submit">
+                                        <font-awesome-icon icon="fa-solid fa-file-excel" />
+                                        Import Login Data
+                                    </button>
+                                </div>
+                                <div class="">
+                                    <input class="text-sm text-stone-400 border border-stone-600 rounded-lg cursor-pointer bg-stone-900 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" name="file" type="file" @input="form3.file = $event.target.files[0]" >
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="hover:text-yellow-500">
+                        <form @submit.prevent="router.post(route('kgs.insert.logout'), form4)" enctype="multipart/form-data">
+                            <div class="grid grid-flow-col justify-stretch">
+                                <div class="text-yellow-700 hover:cursor-pointer hover:text-yellow-500">
+                                    <font-awesome-icon icon="fa-solid fa-caret-right" class="mr-1" />
+                                    <button type="submit">
+                                        <font-awesome-icon icon="fa-solid fa-file-excel" />
+                                        Import Logout Data
+                                    </button>
+                                </div>
+                                <div class="">
+                                    <input class="text-sm text-stone-400 border border-stone-600 rounded-lg cursor-pointer bg-stone-900 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" name="file" type="file" @input="form4.file = $event.target.files[0]" >
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="text-yellow-700 hover:text-yellow-500" @click="router.get(route('kgs.activity'))">activity</li>
+                    <!-- <li class="hover:text-yellow-500" @click="router.get(route('zip.index'),{ option: 'addByPath' })">Add to zip by path</li> -->
                 </ul>
 
                 <p class="mt-4 text-gray-300 text-sm leading-relaxed">

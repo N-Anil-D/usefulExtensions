@@ -48,16 +48,17 @@ class TelegramController extends Controller
         $immortalLoveArray = [
             'Her canlı seni birgün terk edebilir ama ben senden daha uzun yaşayacağım. Sen beni terk edene kadar seni asla terk etmeyeceğim.',
         ];
-
-        /*
+        // $contactList = [1409035025,5182248763,5919177405,6211546136,5829330721,5813584952];
+        // foreach ($contactList as $contact) {
+        // /*
         TelegramMessage::create()
             // Optional recipient user id.
-            // ->to(1065716622)
             ->to(5813584952)
+            // ->to($contact)
             // Markdown supported.
-            ->line("I love you.")
+            ->line("Merhabalar ben Invamed IT ekibinden Anıl Demirbaş;")
             ->line("")
-            ->line("I love you. 2")
+            ->line("https://portal.rdglobal.com.tr da desteğe ihtiyacınız olduğunda bana bu numaradan ulaşabilirsiniz.")
 
             // (Optional) Inline Buttons
             // ->button('Export as PDF', $exportPdf)
@@ -65,12 +66,10 @@ class TelegramController extends Controller
 
             // (Optional) Inline Button with callback. You can handle callback in your bot instance
             // ->buttonWithCallback('Confirm', 'test')
-
-
             ->send();
-        */
+        // */
 
-        // /*
+        /*
         TelegramMessage::create()
             // ->to(env('BOT_LOVE_CHANNEL_ID'))
             ->to(5813584952)
@@ -84,7 +83,7 @@ class TelegramController extends Controller
             // (Optional) Inline Button with callback. You can handle callback in your bot instance
             // ->buttonWithCallback('Confirm', 'test')
             ->send();
-        // */
+        */
 
         /*
         TelegramPoll::create()
@@ -96,16 +95,16 @@ class TelegramController extends Controller
             ->send();
         */
 
-        /*
+        // /*
         TelegramContact::create()
-            // ->to(5813584952)
-            ->to(1065716622)
+            ->to(5813584952)
+            // ->to($contact)
             ->firstName('Anıl')
             ->lastName('Demirbaş') // Optional
-            ->phoneNumber('000 000 00 00')
+            ->phoneNumber('90 538 450 81 64')
             ->send();
 
-        */
+        // */
 
 
         /*
@@ -129,6 +128,7 @@ class TelegramController extends Controller
             ->photo('https://www.wallpaperflare.com/static/232/249/104/heart-digital-art-red-fire-wallpaper-preview.jpg')
             ->send();
         */
+        // }
 
         return redirect()->back();
     }
