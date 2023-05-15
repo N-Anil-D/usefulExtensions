@@ -33,4 +33,9 @@ class KgsUsers extends Model
         return $this->hasOne(KgsCikis::class,'kgs_id','kgs_id')->orderBy('cikis');
     }
 
+    public function kgsUsrToLogoutMultiple()
+    {
+        return $this->hasMany(KgsCikis::class,'kgs_id','kgs_id')->orderBy('cikis');
+    }
+
 }

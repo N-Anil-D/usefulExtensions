@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('kgs_puantajs', function (Blueprint $table) {
             $table->id();
             $table->char('kgs_id',11);
-            $table->dateTime('giris')->nullable();
-            $table->dateTime('cikis')->nullable();
-            $table->integer('geldi');
+            // $table->dateTime('giris')->nullable();
+            // $table->dateTime('cikis')->nullable();
+            // $table->integer('geldi');
             $table->integer('calisma_dakika');
             $table->timestamps();
         });

@@ -49,6 +49,7 @@ Route::middleware([ 'auth:sanctum', config('jetstream.auth_session'), 'verified'
         Route::post('/insert-users', [KgsController::class,'importUsers'])->name('kgs.insert.users');
         Route::post('/insert-login', [KgsController::class,'importLogin'])->name('kgs.insert.login');
         Route::post('/insert-logout', [KgsController::class,'importLogout'])->name('kgs.insert.logout');
+        Route::post('/insert-weekly', [KgsController::class,'importweekly'])->name('kgs.insert.weekly');
         Route::get('/activity', [KgsController::class,'activity'])->name('kgs.activity');
         Route::get('/test', [KgsController::class,'test']);
     });

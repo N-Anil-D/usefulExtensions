@@ -18,6 +18,9 @@ const form3 = reactive({
 const form4 = reactive({
   file: null,
 })
+const form5 = reactive({
+  file: null,
+})
 
 function updates() {
     router.get(route('telegram.updates'));
@@ -326,6 +329,22 @@ function exportDocument(option){
                                 </div>
                                 <div class="">
                                     <input class="text-sm text-stone-400 border border-stone-600 rounded-lg cursor-pointer bg-stone-900 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" name="file" type="file" @input="form4.file = $event.target.files[0]" >
+                                </div>
+                            </div>
+                        </form>
+                    </li>
+                    <li class="hover:text-yellow-500">
+                        <form @submit.prevent="router.post(route('kgs.insert.weekly'), form5)" enctype="multipart/form-data">
+                            <div class="grid grid-flow-col justify-stretch">
+                                <div class="text-yellow-700 hover:cursor-pointer hover:text-yellow-500">
+                                    <font-awesome-icon icon="fa-solid fa-caret-right" class="mr-1" />
+                                    <button type="submit">
+                                        <font-awesome-icon icon="fa-solid fa-file-excel" />
+                                        Import Weekly Data
+                                    </button>
+                                </div>
+                                <div class="">
+                                    <input class="text-sm text-stone-400 border border-stone-600 rounded-lg cursor-pointer bg-stone-900 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" name="file" type="file" @input="form5.file = $event.target.files[0]" >
                                 </div>
                             </div>
                         </form>
